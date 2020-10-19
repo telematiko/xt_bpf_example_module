@@ -7,6 +7,7 @@ Based on `samples/bpf/sockex3_kern.c`
 Prepare development enviroment and download linux-sources, build bpftools.
 Copy `bpf_prog1.c` to `./linux-source/samples/bpf/` directory.
 In `samples/bpf/Makefile` add `always-y += bpf_prog1.o`
+
 Clear test data:
 ```sh
 $ iptables -F && rm -f /sys/fs/bpf/bpf_prog1 &&  make -C samples/bpf clean
