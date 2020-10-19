@@ -34,10 +34,6 @@ static inline void parse_eth_proto(struct __sk_buff *skb, u32 proto)
 	}
 }
 
-struct vlan_hdr {
-	__be16 h_vlan_TCI;
-	__be16 h_vlan_encapsulated_proto;
-};
 
 struct flow_key_record {
 	__be32 src;
@@ -57,16 +53,6 @@ static inline int ip_is_fragment(struct __sk_buff *ctx, __u64 nhoff)
 {
 	return load_half(ctx, nhoff + offsetof(struct iphdr, frag_off))
 		& (IP_MF | IP_OFFSET);
-}
-
-static inline __u32 ipv6_addr_hash(struct __sk_buff *ctx, __u64 off)
-{
-	__u64 w0 = load_word(ctx, off);
-	__u64 w1 = load_word(ctx, off + 4);
-	__u64 w2 = load_word(ctx, off + 8);
-	__u64 w3 = load_word(ctx, off + 12);
-
-	return (__u32)(w0 ^ w1 ^ w2 ^ w3);
 }
 
 struct globals {
