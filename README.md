@@ -7,7 +7,7 @@ Based on `samples/bpf/sockex3_kern.c`
 Prepare development enviroment and download linux-sources, build bpftools.
 Copy `bpf_prog1.c` to `./linux-source/samples/bpf/` directory.
 In `samples/bpf/Makefile` add `always-y += bpf_prog1.o`
-Clean test data:
+Clear test data:
 ```sh
 $ iptables -F && rm -f /sys/fs/bpf/bpf_prog1 &&  make -C samples/bpf clean
 ```
@@ -28,7 +28,7 @@ $ python3 -m http.server &
 $ nc -lu 1234 &
 ```
 
-Send requests to lestened servers from other machine:
+Send requests to listened servers from other machine:
 ```
 $ curl http://$srv:8000/
 $ echo -ne '\x00\x00\x1F\x45' | nc -u $srv 1234 
